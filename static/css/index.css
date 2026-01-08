@@ -129,9 +129,11 @@ body {
   background: #000000;
 }
 
+/* Hide carousel pagination dots */
+.slider-pagination {
+  display: none !important;
+}
+
 .eql-cntrb { 
   font-size: smaller;
 }
-
-
-
