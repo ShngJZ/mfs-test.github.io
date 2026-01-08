@@ -11,7 +11,7 @@ from moviepy import VideoFileClip
 # Configuration
 DURATION = 3  # Number of seconds to convert
 FPS = 10      # Frames per second for GIF
-WIDTH = 320   # Width in pixels (height will be calculated to maintain aspect ratio)
+HEIGHT = 640  # Height in pixels (width will be calculated to maintain aspect ratio)
 INPUT_DIR = "."  # Current directory (static/videos)
 OUTPUT_DIR = "../gifs"  # Output to static/gifs
 
@@ -19,7 +19,7 @@ def ensure_dir(directory):
     """Create directory if it doesn't exist."""
     Path(directory).mkdir(parents=True, exist_ok=True)
 
-def convert_video_to_gif(video_path, gif_path, duration=DURATION, fps=FPS, width=WIDTH):
+def convert_video_to_gif(video_path, gif_path, duration=DURATION, fps=FPS, height=HEIGHT):
     """Convert video to GIF."""
     print(f"Converting: {video_path.name}")
     
@@ -32,8 +32,8 @@ def convert_video_to_gif(video_path, gif_path, duration=DURATION, fps=FPS, width
     # Extract first N seconds
     subclip = clip.subclipped(0, actual_duration)
     
-    # Resize to specified width (maintaining aspect ratio)
-    resized = subclip.resized(width=width)
+    # Resize to specified height (maintaining aspect ratio)
+    resized = subclip.resized(height=height)
     
     # Write GIF file with optimization
     resized.write_gif(str(gif_path), fps=fps)
