@@ -11,7 +11,7 @@ from moviepy import VideoFileClip
 # Configuration
 DURATION = 3  # Number of seconds to convert
 FPS = 10      # Frames per second for GIF
-HEIGHT = 640  # Height in pixels (width will be calculated to maintain aspect ratio)
+HEIGHT = 320  # Height in pixels (width will be calculated to maintain aspect ratio)
 INPUT_DIR = "."  # Current directory (static/videos)
 OUTPUT_DIR = "../gifs"  # Output to static/gifs
 
