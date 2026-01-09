@@ -140,21 +140,14 @@
 <!-- End teaser figure -->
 
 <!-- Paper abstract -->
-<section class="section hero is-light">
+<section class="section hero">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Structure-from-Motion (SfM) is a classical 3D vision task for recovering camera parameters and scene geometry from multi-view images. 
-            Recent advances in deep learning enable accurate monocular depth estimation (MDE) that infers structure from a single image without depending on camera motion.
-            But integrating MDE into SfM remains challenging.
-            Unlike classical triangulated sparse pointclouds, MDE produces dense depthmaps with significantly higher error variance.
-            Inspired by modern RANSAC estimators, we propose a Marginalized Bundle Adjustment (MBA) to accommodate MDE error variance with its density. 
-            With MBA, we show that MDE depthmaps are sufficiently accurate to support SoTA or competitive results in Structure-from-Motion and camera relocalization tasks.
-            Our benchmark demonstrates consistent remarkable results from few-frames small multiview to thousands-frames large multiview systems.
-            Our method highlights the significant potential of MDE on multi-view 3D vision tasks.
+            We introduce <strong>Marginalized Bundle Adjustment (MBA)</strong>, a bundle-adjustment objective tailored to monocular depthmaps. <strong>MBA</strong> registers monocular depthmaps into world coordinate. It accounts mono-depthmaps' high variance with its density. Excitingly, we show that monocular depthmaps are already accurate enough to achieve state-of-the-art results on both small- and large-scale Structure-from-Motion and camera relocalization tasks.
           </p>
         </div>
       </div>
@@ -162,6 +155,24 @@
   </div>
 </section>
 <!-- End paper abstract -->
+
+<!-- Methodology -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Methodology</h2>
+        <img src="static/images/web_methodology.jpg" alt="MBA Methodology" style="width: 100%; height: auto;">
+        <div class="content has-text-justified" style="margin-top: 1rem;">
+          <p>
+            <strong>MBA</strong> formulates the mono-depth's projective residual as an error distribution R={r}. Its forward function is indexing the Cumulative-Distribution-Function (CDF) of residual distribution R. Its backward function is indexing the Probability-Distribution-Function (PDF) of residual distribution R. The Bundle-Adjustment operates to maximize the Area-Under-the-Curve (AUC) of CDF function.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End methodology -->
 
 
 <!-- Results sections -->

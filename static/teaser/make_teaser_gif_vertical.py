@@ -68,6 +68,16 @@ def resize_pointcloud_to_width(pointcloud_array, target_width):
     
     return np.array(resized_pc)
 
+def crop_lower_two_thirds(image_array):
+    """
+    Crop image to keep only the lower 2/3.
+    image_array: numpy array (H, W, C)
+    Returns: cropped numpy array
+    """
+    height = image_array.shape[0]
+    crop_start = height // 3  # Start from 1/3 down
+    return image_array[crop_start:, :, :]
+
 def process_frame_vertical(frame):
     """
     Process a single frame for vertical stacking.
@@ -77,14 +87,19 @@ def process_frame_vertical(frame):
     # Split frame
     rgb, depth, pointcloud = split_frame_horizontal(frame)
     
+    # Crop each component to lower 2/3
+    rgb_cropped = crop_lower_two_thirds(rgb)
+    depth_cropped = crop_lower_two_thirds(depth)
+    pointcloud_cropped = crop_lower_two_thirds(pointcloud)
+    
     # Get RGB/depth width
-    rgb_width = rgb.shape[1]
+    rgb_width = rgb_cropped.shape[1]
     
     # Resize pointcloud to match RGB/depth width
-    pointcloud_resized = resize_pointcloud_to_width(pointcloud, rgb_width)
+    pointcloud_resized = resize_pointcloud_to_width(pointcloud_cropped, rgb_width)
     
     # Stack vertically: RGB, depth, pointcloud
-    result = np.concatenate([rgb, depth, pointcloud_resized], axis=0)
+    result = np.concatenate([rgb_cropped, depth_cropped, pointcloud_resized], axis=0)
     
     return result
 
