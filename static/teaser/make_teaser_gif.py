@@ -25,7 +25,7 @@ RIGHT_BANNER = "Right_banner.png"
 OUTPUT_GIF = "teaser.gif"
 
 # Video parameters
-DURATION = 6  # seconds (30 frames at 5 FPS)
+DURATION = 12  # seconds (30 frames at 5 FPS)
 FPS = 5
 HEIGHT = 320  # target height
 
