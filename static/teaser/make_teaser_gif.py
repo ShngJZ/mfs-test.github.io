@@ -104,8 +104,8 @@ def overlay_banner(base_array, banner_image):
     if banner_width > base_width or banner_height > base_height:
         banner_rgb = banner_rgb.crop((0, 0, min(banner_width, base_width), min(banner_height, base_height)))
     
-    # Paste banner at x=5 (5 pixels from left edge)
-    base_img.paste(banner_rgb, (5, 0))
+    # Paste banner at x=1 (1 pixel from left edge)
+    base_img.paste(banner_rgb, (1, 0))
     
     return np.array(base_img)
 
