@@ -129,9 +129,14 @@ body {
   background: #000000;
 }
 
-/* Hide carousel pagination dots */
+/* Hide carousel pagination dots by default */
 .slider-pagination {
   display: none !important;
+}
+
+/* Show pagination dots for experiments carousel */
+.experiments-carousel .slider-pagination {
+  display: flex !important;
 }
 
 .eql-cntrb { 
